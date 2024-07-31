@@ -1,0 +1,19 @@
+
+  <app-appointment-form (appointmentAdded)="addAppointment($event)"></app-appointment-form>
+  <div class="calendar">
+    <div class="calendar-header">
+      <!-- Render calendar headers and dates here -->
+    </div>
+  
+    <div class="calendar-body">
+      <div 
+        *ngFor="let appointment of appointments" 
+        cdkDrag 
+        (cdkDragStarted)="onDragStart($event, appointment)"
+        [cdkDragData]="appointment"
+      >
+        {{ appointment.title }} on {{ appointment.date | date }}
+        <button (click)="deleteAppointment(appointment.id)">Delete</button>
+      </div>
+    </div>
+  </div>
