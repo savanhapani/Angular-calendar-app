@@ -13,11 +13,17 @@ export class AppointmentFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      date: [null, Validators.required],
+      date: ["", Validators.required],
       title: ['', Validators.required]
     });
   }
-
+  get f()
+  {
+      return this.form.controls;
+  }
+  public getFormGroup(): FormGroup {
+      return this.form;
+  }
   onSubmit() {
     if (this.form.valid) {
       const { date, title } = this.form.value;
